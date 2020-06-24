@@ -274,6 +274,9 @@
     <Content Include="Views\Home\OurCompanyProduct.cshtml" />
     <Content Include="Views\Account\InvalidLogin.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Home\StudentDetails.cshtml" />
+    <Content Include="Views\Home\AmountDemon.cshtml" />
+    <Content Include="Views\Home\RequestExample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
