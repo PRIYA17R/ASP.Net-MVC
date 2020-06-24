@@ -13,5 +13,11 @@ namespace MyfirstApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Contact()
+        {
+            ViewBag.TollFree = "123 -101-123";
+            return View();
+        }
     }
 }

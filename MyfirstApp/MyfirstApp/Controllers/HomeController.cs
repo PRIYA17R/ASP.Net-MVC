@@ -12,20 +12,16 @@ namespace MyfirstApp.Controllers
         {
             return View();
         }
-
-
-
-
-
         public ActionResult Product()
         {
+        
 
             return View("OurCompanyProduct");
         }
 
         public ActionResult Contact()
         {
-
+            ViewBag.TollFree = "650-786-123";
             return View();
         }
         public ActionResult GetEmployeeData(int id)
