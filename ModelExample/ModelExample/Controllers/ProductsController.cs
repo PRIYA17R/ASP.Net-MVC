@@ -29,7 +29,7 @@ namespace ModelExample.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create([Bind(Include ="ProductId, ProductName")] Product product)
         {
             return View();
         }
