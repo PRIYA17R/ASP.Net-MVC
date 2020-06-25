@@ -9,10 +9,13 @@ namespace LayoutExample.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [Route("")]
         public ActionResult Index()
         {
             return View();
         }
+
+        [Route("Profile")]
         public ActionResult Profile()
         {
             return View();
@@ -21,6 +24,7 @@ namespace LayoutExample.Controllers
         {
             return View();
         }
+
         public ActionResult Contact()
         {
             return View();
