@@ -19,10 +19,21 @@ namespace ModelExample.Controllers
                 new Product(){ ProductId = 12, ProductName = "Headphone" , Rate =9000 },
                 new Product() { ProductId = 13, ProductName = "Speakers" , Rate =10000 }
             };
-            ViewBag.products = products;
 
+            return View(products);
+        }
+
+
+        public ActionResult Create()
+        {
             return View();
         }
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            return View();
+        }
+
 
         public ActionResult Details(int? id)
         {
@@ -42,7 +53,6 @@ namespace ModelExample.Controllers
                     matchingProduct = item;
                 }
             }
-            ViewBag.ProductDetails = matchingProduct;
 
             return View(matchingProduct);
          

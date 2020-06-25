@@ -1,9 +1,11 @@
-﻿
+﻿@model List<ModelExample.Models.Product>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Products</h2>
+
+<a href="@Url.Action("Create","Products")"> Create Product </a>
 
 <table class="table">
     <thead>
@@ -16,15 +18,15 @@
     </thead>
     <tbody>
 
-        @foreach(var item in ViewBag.products)
+        @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.ProductId</td>
-            <td><a href="/Products/Details/@item.ProductId">@item.ProductName </a></td>
-            <td>@item.Rate</td>
-        </tr>
+            <tr>
+                <td>@item.ProductId</td>
+                <td><a href="/Products/Details/@item.ProductId">@item.ProductName </a></td>
+                <td>@item.Rate</td>
+            </tr>
 
         }
-        
+
     </tbody>
 </table>
