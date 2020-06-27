@@ -6,35 +6,59 @@
 <h2>Products </h2>
 <form class="form-inline" method="post" action="/Products/Index">
     <label for="search"> Search :  </label>
-    <input type="text" class="form-control" id="txtSearch" name="Search" value="@ViewBag.searchText"/>
+    <input type="text" class="form-control" id="txtSearch" name="Search" value="@ViewBag.searchText" />
     <button class="btn btn-primary"> Go </button>
 </form>
-<table class="table">
+<div class="row">
+    <div class="col-10"></div>
+    <div class="btn btn-primary col-2"> <a href="/Products/Create" style="color:white"> Create </a></div>
+</div>
+
+<br>
+    
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name </th>
+
+            <th>Product Price</th>
+            <th>Date of Purchase </th>
+
+            <th>Avaibility Status</th>
+            <th>CategoryID </th>
+
+            <th>Brand ID</th>
+            <th>Active</th>
+        </tr>
+      
+        @foreach (var product in Model)
+        {
     <tr>
-        <th>Product ID</th>
-        <th>Product Name </th>
 
-        <th>Product Price</th>
-        <th>Date of Purchase </th>
+        <td>@product.ProductID</td>
+        <td>@product.ProductName</td>
+        <td>@product.Price</td>
+        <td>@product.DateOfPurchase</td>
+        <td>@product.AvailabilityStatus</td>
+        <td>@product.CategoryID</td>
+        <td>@product.BrandID</td>
+        <td>@product.Active</td>
+        @*<td>@Html.ActionLink("Edit", "Details", "Products", routeValues: new { @product.ProductID }, htmlAttributes: null)</td>*@
 
-        <th>Avaibility Status</th>
-        <th>CategoryID </th>
+        <td>
+            <a href="/Products/Details/@product.ProductID">Details</a>
+        </td>
+        <td>
+            <a href="/Products/UpdateProduct/@product.ProductID">Edit</a>
+        </td>
+        <td>
+            <a href="/Products/Delete/@product.ProductID">Delete</a>
+        </td>
 
-        <th>Brand ID</th>
     </tr>
-    @foreach (var product in Model)
-    {
-<tr>
+        }
+    </table>
 
-    <td>@product.ProductID</td>
-    <td>@product.ProductName</td>
-    <td>@product.Price</td>
-    <td>@product.DateOfPurchase</td>
-    <td>@product.AvailabilityStatus</td>
-    <td>@product.CategoryID</td>
-    <td>@product.BrandID</td>
-
-</tr>
-    }
-</table>
-
+</div>

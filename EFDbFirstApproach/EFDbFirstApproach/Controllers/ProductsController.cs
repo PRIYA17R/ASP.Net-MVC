@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,17 +17,91 @@ namespace EFDbFirstApproach.Controllers
             EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
            
             List<Product> products = db.Products.Where(t => t.ProductName.Contains(Search)).ToList();
-
-            //    SqlParameter[] sqlParameters = new SqlParameter[]
-            //    {
-            //        new SqlParameter("@BrandID", 2)
-            //    };
-
-            //List<Product> products = db.Database.SqlQuery<Product>("exec GetProductIdByBrand @BrandID ", sqlParameters).ToList();
-
             ViewBag.searchText = Search;
 
-         return View(products);
+             return View(products);
         }
+
+        public ActionResult Details(int? id)
+        {
+            
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            Product product = db.Products.Where(s => s.ProductID == id).FirstOrDefault();
+           return View(product);
+        }
+       
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Product prod)
+        {
+            Product p = new Product() {
+            ProductID= prod.ProductID,
+            ProductName = prod.ProductName,
+            Price = prod.Price,
+            DateOfPurchase =prod.DateOfPurchase,
+            Active = prod.Active,
+            BrandID= prod.BrandID,
+            CategoryID = prod.CategoryID
+            };
+
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+
+            db.Products.Add(p);
+            db.SaveChanges();
+
+            // List<Product> products = db.Products.ToList();
+            return Redirect("/Products/Index");
+           
+        }
+
+        public ActionResult UpdateProduct(int? id)
+        {
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            Product prodToUpdate = db.Products.Where(s => s.ProductID == id).FirstOrDefault();
+            return View(prodToUpdate);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProduct(Product product)
+        {
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            Product exstingProduct = db.Products.Where(s => s.ProductID == product.ProductID).FirstOrDefault();
+            exstingProduct.ProductName = product.ProductName;
+            exstingProduct.Price = product.Price;
+            exstingProduct.DateOfPurchase = product.DateOfPurchase;
+            exstingProduct.AvailabilityStatus = product.AvailabilityStatus;
+            exstingProduct.Active = product.Active;
+            exstingProduct.BrandID = product.BrandID;
+            exstingProduct.CategoryID = product.CategoryID;
+
+
+            db.SaveChanges();
+
+
+            return Redirect("/Products/Index");
+        }
+
+public ActionResult Delete(int id)
+        {
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            Product p = db.Products.Where(s => s.ProductID == id).FirstOrDefault();
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, Product p)
+        {
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            Product existingRecord = db.Products.Where(s => s.ProductID == id).FirstOrDefault();
+            db.Products.Remove(existingRecord);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Products");
+        }
+        
+
     }
 }

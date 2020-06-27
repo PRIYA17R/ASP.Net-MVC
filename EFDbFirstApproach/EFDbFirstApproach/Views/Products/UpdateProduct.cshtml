@@ -1,0 +1,51 @@
+﻿@model EFDbFirstApproach.Models.Product
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Update Product </h2>
+<form action="/Products/UpdateProduct/@Model.ProductID" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Name </label>
+            <input type="hidden" name="ProductID" value="@Model.ProductID" />
+            <input type="text" class="form-control" id="txtProductName" name="ProductName" placeholder="Enter product Name" value="@Model.ProductName" />
+        </div>
+        <div class="form-group col-md-6">
+            <label>Price </label>
+            <input type="number" class="form-control" id="txtProductPrice" name="Price" placeholder="Enter product price" value="@Model.Price" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Avaibility </label>
+            <input type="text" class="form-control" id="txtAvaibility" name="AvailabilityStatus" placeholder="Enter product vaibility" value="@Model.AvailabilityStatus" />
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Category ID </label>
+            <input type="number" class="form-control" id="catId" name="CategoryID" placeholder="Enter category id" value="@Model.CategoryID" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Brand Id </label>
+            <input type="number" class="form-control" id="brandId" name="BrandID" placeholder="Enter product vaibility" value="@Model.BrandID" />
+        </div>
+        <div class="form-group col-md-6">
+            <label>Date of Purchase </label>
+            <input type="text" class="form-control" id="txtProductPurchaseDate" name="DateOfPurchase" placeholder="Enter productPurchaseDate" value="@Model.DateOfPurchase.Value.ToString("d/M/yyyy")" />
+        </div>
+    </div>
+    <div class="form-row col-md-6">
+        <div class="form-check">
+
+            <input type="checkbox" class="form-control" id="txtActive" name="Active" placeholder="Enter active" checked="@Model.Active" value="true" />
+            <label class="form-check-label">Active </label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/Products/Index" class="btn btn-danger" >Cancel</a>
+</form>

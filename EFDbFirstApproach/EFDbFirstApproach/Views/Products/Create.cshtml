@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Create Product </h2>
+<form action="/Products/Create" method="post">
+    <div class="form-group">
+        <label>Product Id </label>
+        <input type="text" class="form-control" id="txtProductId" name="ProductID" placeholder="product Id " />
+    </div>
+    <div class="form-group">
+        <label>Name </label>
+        <input type="text" class="form-control" id="txtProductName" name="ProductName" placeholder="Enter product Name" />
+    </div>
+    <div class="form-group">
+        <label>Price </label>
+        <input type="text" class="form-control" id="txtProductPrice" name="Price" placeholder="Enter product price" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Brand Id </label>
+            <input type="number" class="form-control" id="brandId" name="BrandID" placeholder="Enter product vaibility" />
+        </div>
+        <div class="form-group col-md-6">
+            <label>Category ID </label>
+            <input type="number" class="form-control" id="catId" name="CategoryID" placeholder="Enter category id" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Date of Purchase </label>
+            <input type="text" class="form-control" id="txtProductPurchaseDate" name="DateOfPurchase" placeholder="Enter productPurchaseDate" />
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+
+                <input class="form-check-input" type="checkbox" id="txtActive" name="Active" value="true" />
+                <label class="form-check-label" for="Active">Active </label>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/Products/Index" class="btn btn-danger">Cancel</a>
+</form>
+
