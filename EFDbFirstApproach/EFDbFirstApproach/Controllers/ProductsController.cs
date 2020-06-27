@@ -33,6 +33,9 @@ namespace EFDbFirstApproach.Controllers
         public ActionResult Create()
         {
 
+            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+             ViewBag.Brands = db.Brands.ToList();
+             ViewBag.Categories = db.Categories.ToList();
             return View();
         }
         [HttpPost]
@@ -62,6 +65,8 @@ namespace EFDbFirstApproach.Controllers
         {
             EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
             Product prodToUpdate = db.Products.Where(s => s.ProductID == id).FirstOrDefault();
+            ViewBag.Brands = db.Brands.ToList();
+            ViewBag.Categories = db.Categories.ToList();
             return View(prodToUpdate);
         }
 

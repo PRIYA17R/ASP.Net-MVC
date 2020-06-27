@@ -28,11 +28,23 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Brand Id </label>
-            <input type="number" class="form-control" id="brandId" name="BrandID" placeholder="Enter product vaibility" />
+            <select class="form-control" id="brandId" name="BrandID" placeholder="select Brand">
+                <option value="">Please select</option>
+                @foreach(var b in ViewBag.Brands)
+                {
+                    <option value="@b.BrandID">@b.BrandName</option>
+                }
+            </select>
         </div>
         <div class="form-group col-md-6">
             <label>Category ID </label>
-            <input type="number" class="form-control" id="catId" name="CategoryID" placeholder="Enter category id" />
+            <Select class="form-control" id="catId" name="CategoryID" placeholder="Enter category id" >
+                <option value="">Please Select</option>
+                @foreach (var c in ViewBag.Categories)
+                {
+            <option value="@c.CategoryID">@c.CategoryName</option>
+                }
+            </Select>
         </div>
     </div>
     <div class="form-row">

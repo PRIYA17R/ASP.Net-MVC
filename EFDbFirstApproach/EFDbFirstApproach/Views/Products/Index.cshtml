@@ -31,6 +31,7 @@
 
             <th>Brand</th>
             <th>Active</th>
+            <th></th>
         </tr>
       
         @foreach (var product in Model)
@@ -48,12 +49,10 @@
         @*<td>@Html.ActionLink("Edit", "Details", "Products", routeValues: new { @product.ProductID }, htmlAttributes: null)</td>*@
 
         <td>
-            <a href="/Products/Details/@product.ProductID">Details</a>
-        </td>
-        <td>
-            <a href="/Products/UpdateProduct/@product.ProductID">Edit</a>
-        </td>
-        <td>
+            <a href="/Products/Details/@product.ProductID">Details |</a>
+        
+            <a href="/Products/UpdateProduct/@product.ProductID">Edit |</a>
+        
             <a href="/Products/Delete/@product.ProductID">Delete</a>
         </td>
 

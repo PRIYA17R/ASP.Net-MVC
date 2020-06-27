@@ -23,15 +23,45 @@
             <input type="text" class="form-control" id="txtAvaibility" name="AvailabilityStatus" placeholder="Enter product vaibility" value="@Model.AvailabilityStatus" />
         </div>
 
+
         <div class="form-group col-md-6">
             <label>Category ID </label>
-            <input type="number" class="form-control" id="catId" name="CategoryID" placeholder="Enter category id" value="@Model.CategoryID" />
+            <Select class="form-control" id="catId" name="CategoryID" placeholder="Enter category id">
+                <option value="">Please Select</option>
+                @foreach (var c in ViewBag.Categories)
+                {
+                    if (@c.CategoryID == Model.CategoryID)
+                    {
+                        <option value="@c.CategoryID" selected="selected">@c.CategoryName</option>
+                    }
+                    else { 
+                    <option value="@c.CategoryID">@c.CategoryName</option>
+                    }
+                }
+            </Select>
         </div>
+
+
+
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Brand Id </label>
-            <input type="number" class="form-control" id="brandId" name="BrandID" placeholder="Enter product vaibility" value="@Model.BrandID" />
+            <select class="form-control" id="brandId" name="BrandID" placeholder="select Brand">
+                <option value="">Please select</option>
+                @foreach (var b in ViewBag.Brands)
+                {
+                    if (b.BrandID == Model.BrandID)
+                    {
+                      <option value="@b.BrandID" selected="selected">@b.BrandName</option>
+                    }
+                    else
+                    {
+                      <option value="@b.BrandID">@b.BrandName</option>
+                    }
+
+                }
+            </select>
         </div>
         <div class="form-group col-md-6">
             <label>Date of Purchase </label>
