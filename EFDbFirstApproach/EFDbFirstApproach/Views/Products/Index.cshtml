@@ -27,9 +27,9 @@
             <th>Date of Purchase </th>
 
             <th>Avaibility Status</th>
-            <th>CategoryID </th>
+            <th>Category </th>
 
-            <th>Brand ID</th>
+            <th>Brand</th>
             <th>Active</th>
         </tr>
       
@@ -42,8 +42,8 @@
         <td>@product.Price</td>
         <td>@product.DateOfPurchase</td>
         <td>@product.AvailabilityStatus</td>
-        <td>@product.CategoryID</td>
-        <td>@product.BrandID</td>
+        <td>@product.Category.CategoryName</td>
+        <td>@product.Brand.BrandName</td>
         <td>@product.Active</td>
         @*<td>@Html.ActionLink("Edit", "Details", "Products", routeValues: new { @product.ProductID }, htmlAttributes: null)</td>*@
 
